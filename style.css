@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+:root {
+
+  --bg1: #6a11cb;
+
+  --bg2: #2575fc;
+
+  --x-color: #ff4c4c;
+
+  --o-color: #4cc9ff;
+
+  --accent: #00ffae;
+
+}
+
+body {
+
+  margin: 0;
+
+  min-height: 100vh;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: linear-gradient(135deg, var(--bg1), var(--bg2));
+
+  font-family: 'Poppins', sans-serif;
+
+  color: #fff;
+
+}
+
+.game-container {
+
+  width: 360px;
+
+  text-align: center;
+
+  padding: 25px;
+
+  border-radius: 18px;
+
+  box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+
+  background: rgba(255,255,255,0.08);
+
+  backdrop-filter: blur(6px);
+
+}
+
+h1 { margin-bottom: 10px; }
+
+/* Mode Toggle */
+
+.mode-toggle { display: flex; justify-content: center; margin: 10px 0; z-index:10; }
+
+#toggleModeBtn { background: var(--accent); border:none; padding:8px 12px; border-radius:8px; font-weight:600; cursor:pointer; color:#000; font-size:1rem; }
+
+/* PvP Names */
+
+.pvp-names { display:flex; justify-content:center; gap:10px; margin-bottom:10px; z-index:10; }
+
+.pvp-names input { padding:6px 10px; border-radius:6px; border:none; font-weight:600; width:120px; text-align:center; font-size:0.9rem; }
+
+/* Difficulty Tab */
+
+.diff-tab { display:inline-flex; background:rgba(255,255,255,0.1); border-radius:999px; padding:6px; position:relative; }
+
+.diff-btn { background:transparent; border:none; color:white; font-weight:bold; padding:8px 14px; border-radius:999px; cursor:pointer; z-index:2; }
+
+.diff-btn.active { color:#000; }
+
+.diff-tab .glow { position:absolute; left:6px; top:6px; width:calc(33.333% - 12px); height:calc(100% - 12px); background:linear-gradient(90deg,#00ffae,#4cc9ff); border-radius:999px; transition:left .3s ease; filter:blur(8px); opacity:0.8; }
+
+/* Board */
+
+.board { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; width:320px; margin:10px auto; position:relative; }
+
+.cell { width:100%; padding-top:100%; position:relative; background:rgba(255,255,255,0.1); border-radius:12px; cursor:pointer; transition: transform .15s ease; }
+
+.cell:hover { transform: scale(1.05); }
+
+.cell span { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:2.6rem; }
+
+.x { color: var(--x-color); }
+
+.o { color: var(--o-color); }
+
+.status { margin:8px 0; font-size:1rem; }
+
+.buttons { display:flex; gap:8px; justify-content:center; }
+
+button { background: var(--accent); border:none; padding:10px 12px; border-radius:8px; font-weight:600; cursor:pointer; transition: transform .2s ease; }
+
+button:hover { transform: scale(1.05); }
+
+/* Flashes */
+
+.flash-player { animation: flashRed 2s ease forwards; }
+
+.flash-ai { animation: flashBlue 2s ease forwards; }
+
+.flash-gold { animation: flashGold 2s ease forwards; }
+
+@keyframes flashRed {0%,100%{box-shadow:none;}25%,75%{box-shadow:0 0 20px red;}}
+
+@keyframes flashBlue {0%,100%{box-shadow:none;}25%,75%{box-shadow:0 0 20px dodgerblue;}}
+
+@keyframes flashGold {0%,100%{box-shadow:none;}25%,75%{box-shadow:0 0 20px gold;}}
+
+/* Scoreboard */
+
+.scoreboard { display:flex; justify-content:space-around; margin-bottom:15px; font-weight:bold; color:#fff6a3; text-shadow:0 0 10px #ffcc70; }
+
+/* Winning line */
+
+#win-line { position:absolute; background:red; display:none; z-index:5; }
+/* Winning line */
+
+#win-line {
+
+  position: absolute;
+
+  height: 6px;
+
+  background: red;
+
+  top: 0;
+
+  left: 0;
+
+  transform-origin: left center;
+
+  display: none;
+
+  border-radius: 3px;
+
+  z-index: 5;
+
+  pointer-events: none;
+
+  transition: all 0.3s ease;
+
+}
+
+/* Enhanced flash */
+
+.flash-red, .flash-blue, .flash-gold {
+
+  animation: flashColor 1s ease 0s 3;
+
+}
+
+@keyframes flashColor {
+
+  0%, 100% { box-shadow: none; }
+
+  25%, 50%, 75% { box-shadow: 0 0 40px currentColor; }
+
+}
